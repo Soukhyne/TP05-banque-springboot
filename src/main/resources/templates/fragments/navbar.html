@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<meta charset="utf-8">
+
+	<nav th:fragment="navbar" class="navbar navbar-dark navbar-expand-lg bg-dark">
+	
+	    <div class="container-fluid my-3">
+	        <a class="navbar-brand fs-2 mx-2 text-succes" href="#">💵 Banque <span class="fw-bold">Spring Boot</span></a>
+	        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	        <div class="collapse navbar-collapse" id="navbar">
+	            <ul class="navbar-nav">
+	                <li><a class="fs-4 lien_navbar ms-4" th:href="@{/banque/banques}">Banques</a></li>
+	                <li><a class="fs-4 lien_navbar ms-4" th:href="@{/client/clients}">Clients</a></li>
+	                <li><a class="fs-4 lien_navbar ms-4" th:href="@{/compte/comptes}">Comptes</a></li>
+	                <li><a class="fs-4 lien_navbar ms-4" th:href="@{/#}">Opérations</a></li>
+	            </ul>
+	        </div>
+	    </div>
+	    
+	</nav>
+
+</html>

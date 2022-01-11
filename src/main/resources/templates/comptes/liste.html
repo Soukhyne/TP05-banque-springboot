@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+                      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Banque</title>
+        <link th:replace="fragments/liens :: liens">
+    </head>
+    <body>
+        <nav th:replace="fragments/navbar :: navbar"></nav>
+        <div class="container mt-4">
+            <h1 th:text="${titre}"></h1>
+            <br />
+            <a class="btn btn-primary" th:href="@{/compte/add}">Nouveau compte</a>
+            <hr />
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    	<th>Client</th>
+                    	<th>Banque</th>
+                        <th>Numéro de compte</th>
+                        <th>Solde</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="compte : ${comptes}">
+                    	<td th:text="${compte.clients}" class="align-middle"></td>
+                    	<td th:text="${compte.numero}" class="align-middle">banque</td>
+                        <td th:text="${compte.numero}" class="align-middle"></td>
+                        <td th:text="${#numbers.formatCurrency(compte.solde)}" class="align-middle"></td>
+                        <td class="text-end">
+                        	<a th:href="@{/compte/update/{id}(id=${compte.id})}" class="btn btn-success">Modifier</a>
+                        	<a th:href="@{/compte/delete/{id}(id=${compte.id})}" class="btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>  
+        </div> 
+    </body>
+</html>

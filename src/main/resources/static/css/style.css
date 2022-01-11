@@ -1,0 +1,22 @@
+.navbar-brand {
+    color: rgb(50, 150, 100) !important;
+}
+
+.navbar-brand:hover {
+    color: rgb(50, 150, 100);
+}
+
+.lien_navbar {
+    color: white;
+    text-decoration: none;
+}
+
+.lien_navbar:hover {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+}
+
+li{
+	list-style: none;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+                      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Ajout d'un compte</title>
+        <link th:replace="fragments/liens :: liens">
+    </head>
+    <body>
+    	<nav th:replace="fragments/navbar :: navbar"></nav>
+        <div class="container mt-4">
+            <h1 th:text="${titre}" class="mb-3"></h1>
+            <form class="mb-3"
+                  th:action="@{/compte/add}"  
+                  th:object="${compteForm}"
+                  method="post">
+                  <div class="row mb-3">
+                      <div class="col-4">
+                          <label class="form-label">Numéro de compte</label>
+                          <input class="form-control" type="text" th:field="*{numero}" />
+                      </div>
+                      <div class="col-4">
+                          <label class="form-label">Solde</label>
+                          <input class="form-control" type="text" th:field="*{solde}" />
+                      </div>
+                  </div>
+                  <input class="btn btn-primary" type="submit" value="Créer" />
+             </form>
+             <a th:href="@{/compte/comptes}">Retour</a>
+        </div>
+    </body>
+</html>

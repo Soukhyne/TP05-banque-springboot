@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+                      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Ajout d'un client</title>
+        <link th:replace="fragments/liens :: liens">
+    </head>
+    <body>
+    <nav th:replace="fragments/navbar :: navbar"></nav>
+	    <div class="container mt-4">
+	        <h1 th:text="${titre}" class="mb-3"></h1>
+	        <form class="mb-3"
+	        	  th:action="@{/client/update}"  
+	              th:object="${clientForm}"
+	              method="post">
+	              <h2 class="fs-5 mt-5">Client :</h2>
+	              <div class="row mb-3">
+	              	<div class="col-4">
+	              		<label class="form-label">Prénom</label>
+	              		<input class="form-control" type="text" th:field="*{prenom}" />
+	              	</div>
+	              	<div class="col-4">
+	              		<label class="form-label">Nom</label>
+	              		<input class="form-control" type="text" th:field="*{nom}" />
+	              	</div>
+	              	<div class="col-4">
+	              		<label class="form-label">Date de naissance</label>
+	              		<input class="form-control" type="date" th:field="*{dateNaissance}" />
+	              	</div>
+	              </div>
+	              <h2 class="fs-5 mt-4">Adresse :</h2>
+	              <div class="row mb-3">
+	              	<div class="col-4 col-md-2">
+	              		<label class="form-label mt-2">Numéro</label>
+	              		<input class="form-control" type="text" th:field="*{adresse.numero}" />
+	              	</div>
+	              	<div class="col-8 col-md-4 mt-2">
+	              		<label class="form-label">Rue</label>
+	              		<input class="form-control" type="text" th:field="*{adresse.rue}" />
+	              	</div>
+	              	<div class="col-4 col-md-2 mt-2">
+	              		<label class="form-label">Code postal</label>
+	              		<input class="form-control" type="text" th:field="*{adresse.codePostal}" />
+	              	</div>
+	              	<div class="col-8 col-md-4 mt-2">
+	              		<label class="form-label">Ville</label>
+	              		<input class="form-control" type="text" th:field="*{adresse.ville}" />
+	              	</div>
+	              </div>
+	              <input type="hidden" th:field="*{id}" />
+	              <input class="btn btn-primary mt-3" type="submit" value="Mettre à jour" />
+	         </form>
+	         <a th:href="@{/client/clients}">Retour</a>
+	    </div>
+    </body>
+</html>

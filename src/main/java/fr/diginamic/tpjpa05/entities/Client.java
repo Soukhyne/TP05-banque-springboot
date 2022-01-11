@@ -15,7 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 @Table(name="client")
@@ -28,13 +29,13 @@ public class Client {
 	@NotBlank
 	@Column(name="nom")
 	private String nom;
-	@NotNull
+	@NotNull 
 	@NotBlank
 	@Column(name="prenom")
 	private String prenom;
 	@NotNull
-	@Past
 	@Column(name="dateNaissance")
+	@DateTimeFormat(iso=ISO.DATE) //a cause de firefox sinon il aurait fallu mettre (pattern="YYYY-dd-MMM")
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
 
@@ -80,6 +81,7 @@ public class Client {
 		this.prenom = prenom;
 	}
 
+	
 	public Date getDateNaissance() {
 		return dateNaissance;
 	}

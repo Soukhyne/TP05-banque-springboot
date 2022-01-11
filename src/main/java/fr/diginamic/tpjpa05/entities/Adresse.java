@@ -10,14 +10,14 @@ public class Adresse {
 	
 	@Column(name="numero")
 	@NotNull
-	private Integer numero;
+	private int numero;
 	@Column(name="rue")
 	@NotNull
 	@NotBlank
 	private String rue;
 	@Column(name="codePostal")
 	@NotNull
-	private Integer codePostal;
+	private int codePostal;
 	@Column(name="ville")
 	@NotNull
 	@NotBlank
@@ -68,7 +68,7 @@ public class Adresse {
 
 	@Override
 	public String toString() {
-		return "Adresse [numero=" + numero + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville + "]";
+		return "" + numero + " " + rue + ", " + codePostal + " " + ville;
 	}
 
 	

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+                      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Banque</title>
+        <link th:replace="fragments/liens :: liens">
+    </head>
+    <body>
+        <nav th:replace="fragments/navbar :: navbar"></nav>
+        <div class="container mt-4">
+            <h1 th:text="${titre}"></h1>
+            <br />
+            <a class="btn btn-primary" th:href="@{/banque/add}">Nouvelle banque</a>
+            <hr />
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nom de la banque</th>
+                        <th>Clients</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="banque : ${banques}">
+                        <td th:text="${banque.nom}" class="align-middle"></td>
+                        <td class="aligne-middle">
+                        	<ul class="mb-0 p-0">
+                        	<li th:each="client : ${crudBanque.findClientsByIdBanque(banque.id)}">
+                        		<span th:text="${client.nom} + ' '+${client.prenom} "></span>
+                        	</li>
+                        	</ul >
+                        </td >
+                        <td class="text-end align-middle">
+                        	<a th:href="@{/banque/update/{id}(id=${banque.id})}" class="btn btn-success">Modifier</a>
+                        	<a th:href="@{/banque/delete/{id}(id=${banque.id})}" class="btn btn-danger">Supprimer</a>
+                        </td>
+                    </td>
+                </tbody>
+            </table>  
+        </div> 
+    </body>
+</html>
