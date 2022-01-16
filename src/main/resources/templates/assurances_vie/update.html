@@ -11,19 +11,27 @@
         <div class="container mt-4">
             <h1 th:text="${titre}" class="mb-3"></h1>
             <form class="mb-3"
-                  th:action="@{/compte/update}"  
+                  th:action="@{/assurance_vie/update}"  
                   th:object="${compteForm}"
                   method="post">
                   <div class="row mb-3">
-                      <div class="col-4">
+                      <div class="col-3">
                           <label class="form-label">Numéro de compte</label>
                           <input class="form-control" type="text" th:field="*{numero}" />
                       </div>
-                      <div class="col-4">
+                      <div class="col-3">
                           <label class="form-label">Solde</label>
                           <input class="form-control" type="text" th:field="*{solde}" />
                       </div>
-                      <div class="col-4">
+                      <div class="col-3">
+                          <label class="form-label">Taux</label>
+                          <input class="form-control" type="text" th:field="*{taux}" />
+                      </div>
+                       <div class="col-3">
+                          <label class="form-label">Date</label>
+                          <input class="form-control" type="date" th:field="*{dateFin}" />
+                      </div>
+                      <div class="col-3">
 	              		<label class="form-label">Client</label>
 	              		<select class="form-control"  th:field="*{clients}" />
 	              			<option th:each="client: ${crudClient.findAll()}" th:value="${client.id}" th:text="${client.nom} +' '+ ${client.prenom}"></option>
@@ -34,7 +42,7 @@
                   <input type="hidden" th:field="*{id}" />
                   <input class="btn btn-primary" type="submit" value="Mettre à jour" />
              </form>
-             <a th:href="@{/compte/comptes}">Retour</a>
+             <a th:href="@{/assurance_vie/comptes}">Retour</a>
         </div>
     </body>
 </html>

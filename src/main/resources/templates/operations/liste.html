@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+                      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Banque</title>
+        <link th:replace="fragments/liens :: liens">
+    </head>
+    <body>
+        <nav th:replace="fragments/navbar :: navbar"></nav>
+        <div class="container mt-4">
+            <h1 th:text="${titre}"></h1>
+            <br />
+            <a class="btn btn-primary" th:href="@{/operation/add}">Nouvelle opération</a>
+            <hr />
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    	<th>Date</th>
+                    	<th>Montant</th>
+                        <th>Motif</th>
+                        <th>Numéro de Compte</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="operation : ${operations}">
+                    	<td th:text="${operation.date}" class="align-middle"></td>
+                    	<td th:text="${#numbers.formatCurrency(operation.montant)}" class="align-middle"></td>
+                    	<td th:text="${operation.motif}" class="align-middle"></td>
+                    	<td th:text="${operation.compte.getNumero()}" class="align-middle"></td>
+                        <td class="text-end">
+                        	<a th:href="@{/operation/update/{id}(id=${operation.id})}" class="btn btn-success">Modifier</a>
+                        	<a th:href="@{/operation/delete/{id}(id=${operation.id})}" class="btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>  
+        </div> 
+    </body>
+</html>

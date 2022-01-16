@@ -17,6 +17,9 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -28,6 +31,7 @@ public class Operation {
 	private long id;
 	
 	@NotNull
+	@DateTimeFormat(iso=ISO.DATE)
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="date")
 	private Date date;
@@ -63,6 +67,7 @@ public class Operation {
 		this.id = id;
 	}
 
+	
 	public Date getDate() {
 		return date;
 	}

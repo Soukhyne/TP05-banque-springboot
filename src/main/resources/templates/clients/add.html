@@ -50,9 +50,8 @@
 	              </div>
 	              <h2 class="fs-5 mt-4">Banque :</h2>
 	              <div class="col-4">
-	              		<label class="form-label">Banque</label>
-	              		<select class="form-control"  th:field="*{banque}" />
 	              		
+	              		<select class="form-control"  th:field="*{banque}" />
 	              			<option th:each="banque: ${crudBanque.findAll()}" th:value="${banque.id}" th:text="${banque.nom}"></option>
 	              		</select>
 	              	</div>

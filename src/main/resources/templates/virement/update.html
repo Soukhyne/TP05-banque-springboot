@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+                      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Ajout d'un compte</title>
+        <link th:replace="fragments/liens :: liens">
+    </head>
+    <body>
+    	<nav th:replace="fragments/navbar :: navbar"></nav>
+        <div class="container mt-4">
+            <h1 th:text="${titre}" class="mb-3"></h1>
+            <form class="mb-3"
+                  th:action="@{/virement/update}"  
+                  th:object="${operationForm}"
+                  method="post">
+                  <div class="row mb-3">
+                      <div class="col-4">
+                          <label class="form-label">Date</label>
+                          <input class="form-control" type="date" th:field="*{date}" />
+                      </div>
+                      <div class="col-4">
+                          <label class="form-label">Montant</label>
+                          <input class="form-control" type="text" th:field="*{montant}" />
+                      </div>
+	              	  <div class="col-4">
+                          <label class="form-label">Motif</label>
+                          <input class="form-control" type="text" th:field="*{motif}" />
+                      </div>
+                  </div>
+                  <div class="row mb-3">   
+                      <div class="col-4">
+		              		<label class="form-label">Numero de compte</label>
+		              		<select class="form-control"  th:field="*{compte}" />
+		              			<option th:each="compte: ${crudCompte.findAll()}" th:value="${compte.id}" th:text="${compte.numero}"></option>
+		              		</select>
+	              	  </div>
+	              	  <div class="col-4">
+                          <label class="form-label">Bénéficiaire</label>
+                          <input class="form-control" type="text" th:field="*{beneficiaire}" />
+                      </div>
+                  </div>
+                
+                  <input type="hidden" th:field="*{id}" />
+                  <input class="btn btn-primary" type="submit" value="Mettre à jour" />
+             </form>
+             <a th:href="@{/virement/operations}">Retour</a>
+        </div>
+    </body>
+</html>

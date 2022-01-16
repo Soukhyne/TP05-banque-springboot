@@ -48,6 +48,14 @@
 	              		<input class="form-control" type="text" th:field="*{adresse.ville}" />
 	              	</div>
 	              </div>
+	              <h2 class="fs-5 mt-4">Banque :</h2>
+	              <div class="col-4">
+	              		<label class="form-label">Banque</label>
+	              		<select class="form-control"  th:field="*{banque}" />
+	              		
+	              			<option th:each="banque: ${crudBanque.findAll()}" th:value="${banque.id}" th:text="${banque.nom}"></option>
+	              		</select>
+	              	</div>
 	              <input type="hidden" th:field="*{id}" />
 	              <input class="btn btn-primary mt-3" type="submit" value="Mettre à jour" />
 	         </form>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+                      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Ajout d'un compte</title>
+        <link th:replace="fragments/liens :: liens">
+    </head>
+    <body>
+    	<nav th:replace="fragments/navbar :: navbar"></nav>
+        <div class="container mt-4">
+            <h1 th:text="${titre}" class="mb-3"></h1>
+            <form class="mb-3"
+                  th:action="@{/operation/add}"  
+                  th:object="${operationForm}"
+                  method="post">
+                  <div class="row mb-3">
+                      <div class="col-3">
+                          <label class="form-label">Date</label>
+                          <input class="form-control" type="date" th:field="*{date}" />
+                      </div>
+                      <div class="col-3">
+                          <label class="form-label">Montant</label>
+                          <input class="form-control" type="text" th:field="*{montant}" />
+                      </div>
+	              	  <div class="col-3">
+                          <label class="form-label">Motif</label>
+                          <input class="form-control" type="text" th:field="*{motif}" />
+                      </div>
+                      <div class="col-3">
+		              		<label class="form-label">Numero de compte</label>
+		              		<select class="form-control"  th:field="*{compte}" />
+		              			<option th:each="compte: ${crudCompte.findAll()}" th:value="${compte.id}" th:text="${compte.numero}"></option>
+		              		</select>
+	              	  </div>
+                  </div>
+                  
+                  <input class="btn btn-primary" type="submit" value="Créer" />
+             </form>
+             <a th:href="@{/operation/operations}">Retour</a>
+        </div>
+    </body>
+</html>

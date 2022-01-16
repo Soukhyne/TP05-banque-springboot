@@ -11,7 +11,7 @@
         <div class="container mt-4">
             <h1 th:text="${titre}"></h1>
             <br />
-            <a class="btn btn-primary" th:href="@{/compte/add}">Nouveau compte</a>
+            <a class="btn btn-primary" th:href="@{/assurance_vie/add}">Nouvelle Assurance Vie</a>
             <hr />
             <table class="table table-striped">
                 <thead>
@@ -20,22 +20,26 @@
                     	<th>Banque</th>
                         <th>Numéro de compte</th>
                         <th>Solde</th>
+                        <th>Taux</th>
+                        <th>Date de fin</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="compte : ${comptes}">
+                    <tr th:each="assuranceVie : ${assurancesVie}">
                     	<td class="align-middle">
-                    		<span th:each="client: ${compte.getClients()}" th:text="${client}"></span>
+                    		<span th:each="client: ${assuranceVie.getClients()}" th:text="${client}"></span>
                     	</td >
                     	<td class="align-middle">
-                    		<span th:each="client: ${compte.getClients()}" th:text="${client.banque}"></span>
+                    		<span th:each="client: ${assuranceVie.getClients()}" th:text="${client.banque}"></span>
                     	</td >
-                        <td th:text="${compte.numero}" class="align-middle"></td>
-                        <td th:text="${#numbers.formatCurrency(compte.solde)}" class="align-middle"></td>
+                        <td th:text="${assuranceVie.numero}" class="align-middle"></td>
+                        <td th:text="${#numbers.formatCurrency(assuranceVie.solde)}" class="align-middle"></td>
+                        <td th:text="${assuranceVie.taux}+ '%'" class="align-middle"></td>
+                        <td th:text="${assuranceVie.dateFin}" class="align-middle"></td>
                         <td class="text-end">
-                        	<a th:href="@{/compte/update/{id}(id=${compte.id})}" class="btn btn-success">Modifier</a>
-                        	<a th:href="@{/compte/delete/{id}(id=${compte.id})}" class="btn btn-danger">Supprimer</a>
+                        	<a th:href="@{/assurance_vie/update/{id}(id=${assuranceVie.id})}" class="btn btn-success">Modifier</a>
+                        	<a th:href="@{/assurance_vie/delete/{id}(id=${assuranceVie.id})}" class="btn btn-danger">Supprimer</a>
                         </td>
                     </tr>
                 </tbody>

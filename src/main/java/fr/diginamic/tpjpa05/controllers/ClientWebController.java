@@ -66,6 +66,7 @@ public class ClientWebController {
 	@GetMapping("/update/{id}")
 	public String updateClient(Model model, @PathVariable("id") Long id) {
 		model.addAttribute("clientForm", crudClient.findById(id) );
+		model.addAttribute("crudBanque", crudBanque);
 		model.addAttribute("titre","Modification client");
 		return "clients/update";
 	}

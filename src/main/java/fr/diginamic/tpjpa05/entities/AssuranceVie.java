@@ -10,13 +10,16 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 @Entity
 @Table(name="assuranceVie")
 public class AssuranceVie extends Compte {
 	
+	@DateTimeFormat(iso=ISO.DATE) //a cause de firefox sinon il aurait fallu mettre (pattern="YYYY-dd-MMM")
 	@Temporal(TemporalType.DATE)
 	@NotNull
-	@Future
 	@Column(name="dateFin")
 	private Date dateFin;
 	
